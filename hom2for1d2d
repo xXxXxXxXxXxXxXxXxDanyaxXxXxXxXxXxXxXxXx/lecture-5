@@ -1,0 +1,59 @@
+
+data = input('')
+
+nomberOFcubes = ''
+
+for i in range(len(data)):
+    if data[i] != 'd':
+        nomberOFcubes += str(data[i])
+    else:
+        break
+print('Количество кубиков =>',nomberOFcubes)
+
+nomberOFsides = ''
+
+for i in range(len(data)):
+    if data[i] == 'd':
+        nomberOFsides += data[i+1:]
+        break
+print('Количество сторон =>',nomberOFsides)
+
+nomberOFsides = int(nomberOFsides)
+
+nomberOFcubes = int(nomberOFcubes)
+
+if nomberOFcubes == 1:
+    print('Вероятности возможных сумм ->')
+    for i in range(1,nomberOFsides+1):
+        probability = 100*nomberOFsides**-1
+        print(i, '=', probability ,'%')
+
+if nomberOFcubes > 1:
+    print('Вероятности возможных сумм ->')
+    additionalСomponent = 1
+    for i in range(nomberOFcubes,nomberOFsides*nomberOFcubes + 1):
+        probability = (additionalСomponent / nomberOFsides ** nomberOFcubes) * 100
+        additionalСomponent += 1
+        print(i, '=' ,probability, '%')
+        if additionalСomponent == nomberOFsides + 1:
+            break
+            
+        r = 2    
+    for i in range(nomberOFcubes + additionalСomponent - 1,nomberOFsides*nomberOFcubes + 1):
+        probability = ((additionalСomponent - r) / nomberOFsides ** nomberOFcubes) * 100
+        r += 1
+        print(i, '=' ,probability, '%')
+        if additionalСomponent - r < 1:
+            break
+
+SuperMassive = []
+
+s = 1
+            
+while s < nomberOFcubes + 1:
+    t = 0
+    while t < nomberOFsides:
+
+        for i in range(nomberOFcubes,nomberOFsides + 1):
+            SuperMassive.append(nomberOFcubes + t) 
+        
