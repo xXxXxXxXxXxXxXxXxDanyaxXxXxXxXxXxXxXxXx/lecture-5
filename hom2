@@ -1,0 +1,32 @@
+
+data = input('')
+
+nomberOFcubes = ''
+
+for i in range(len(data)):
+    if data[i] != 'd':
+        nomberOFcubes += str(data[i])
+    else:
+        break
+print('Количество кубиков =>',nomberOFcubes)
+
+nomberOFsides = ''
+
+for i in range(len(data)):
+    if data[i] == 'd':
+        nomberOFsides += data[i+1:]
+        break
+print('Количество сторон =>',nomberOFsides)
+
+nomberOFsides = int(nomberOFsides)
+
+nomberOFcubes = int(nomberOFcubes)
+
+SuperMassive = []
+
+for i in range(nomberOFsides):
+    element = nomberOFcubes + i 
+    for i in range(nomberOFsides):
+        component = nomberOFsides + i
+        SuperMassive.append(component)
+    
